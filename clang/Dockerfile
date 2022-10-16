@@ -5,7 +5,9 @@ LABEL maintainer="Björn Fahller <bjorn@fahller.se>"
 WORKDIR /root
 COPY clang/install-clang.sh clang/install-libcxx.sh common/install-cmake.sh common/install-kcov.sh test/test.cpp ./
 
-ARG CLANG_VERSION LIBCXX BUILD_LIBCXX
+ARG CLANG_VERSION
+ARG LIBCXX
+ARG BUILD_LIBCXX
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
     binutils-dev \
