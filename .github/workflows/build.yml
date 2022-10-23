@@ -15,14 +15,14 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - { clang_version: "3.5", libcxx: "libc++-dev", buildl_ibcxx: "", container: $UBUNTU_16_04 }
-          - { clang_version: "3.6", libcxx: "libc++-dev", build_libcxx: "", container: $UBUNTU_16_04 }
-          - { clang_version: "3.7", libcxx: "libc++-dev", build_libcxx: "", container: $UBUNTU_16_04 } # no sanitizers!
-          - { clang_version: "3.8", libcxx: "", build_libcxx: "./install-libcxx.sh 3.8 3.8.1 && ", container: $UBUNTU_16_04 }
-          - { clang_version: "3.9", libcxx: "", build_libcxx: "./install-libcxx.sh 3.9 3.9.1 && ", container: $UBUNTU_16_04 }
-          - { clang_version: "4.0", libcxx: "", build_libcxx: "./install-libcxx.sh 4.0 4.0.1 && ", container: $UBUNTU_18_04 }
-          - { clang_version: "5.0", libcxx: "", build_libcxx: "./install-libcxx.sh 5.0 5.0.2 && ", container: $UBUNTU_18_04 }
-          - { clang_version: "6.0", libcxx: "", build_libcxx: "./install-libcxx.sh 6.0 6.0.1 && ", container: $UBUNTU_18_04 }
+          - { clang_version: "3.5", libcxx: "", build_libcxx: "./install-libcxx.sh 3.5 3.5.2 && ", container: $UBUNTU_16_04 }
+          - { clang_version: "3.6", libcxx: "", build_libcxx: "./install-libcxx.sh 3.6 3.6.2 && ", container: $UBUNTU_16_04 }
+          - { clang_version: "3.7", libcxx: "", build_libcxx: "./install-libcxx.sh 3.7 3.7.1 && ", container: $UBUNTU_16_04 } # no sanitizers!
+          - { clang_version: "3.8", libcxx: "", build_libcxx: "./install-libcxx.sh 3.8 3.8.1 &&  ", container: $UBUNTU_16_04 }
+          - { clang_version: "3.9", libcxx: "", build_libcxx: "./install-libcxx.sh 3.9 3.9.1 &&  ", container: $UBUNTU_16_04 }
+          - { clang_version: "4.0", libcxx: "", build_libcxx: "./install-libcxx.sh 4.0 4.0.1 &&  ", container: $UBUNTU_18_04 }
+          - { clang_version: "5.0", libcxx: "", build_libcxx: "./install-libcxx.sh 5.0 5.0.2 &&  ", container: $UBUNTU_18_04 }
+          - { clang_version: "6.0", libcxx: "", build_libcxx: "./install-libcxx.sh 6.0 6.0.1 &&  ", container: $UBUNTU_18_04 }
           - { clang_version: "7",   libcxx: "", build_libcxx: "./install-libcxx.sh 7 7.1.0 && ", container: $UBUNTU_18_04 }
           - { clang_version: "8",   libcxx: "", build_libcxx: "./install-libcxx.sh 8 8.0.1 && ", container: $UBUNTU_20_04 }
           - { clang_version: "9",   libcxx: "", build_libcxx: "./install-libcxx.sh 9 9.0.1 && ", container: $UBUNTU_20_04 }

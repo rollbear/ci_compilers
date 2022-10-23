@@ -15,16 +15,16 @@ else
 fi
 LLVM_URL="${BASE_URL}${VERSION}/llvm-${VERSION}.src.tar.xz"
 LIBCXX_URL="${BASE_URL}${VERSION}/libcxx-${VERSION}.src.tar.xz"
-#LIBCXXABI_URL="${BASE_URL}${VERSION}/libcxxabi-${VERSION}.src.tar.xz"
-COMPILERRT_URL="${BASE_URL}${VERSION}/compiler-rt-${VERSION}.src.tar.xz"
+LIBCXXABI_URL="${BASE_URL}${VERSION}/libcxxabi-${VERSION}.src.tar.xz"
+#COMPILERRT_URL="${BASE_URL}${VERSION}/compiler-rt-${VERSION}.src.tar.xz"
 echo wget $LLVM_URL
 echo wget $LIBCXX_URL
-#echo wget $LIBCXXABI_URL
-echo wget $COMPILERRT_URL
+echo wget $LIBCXXABI_URL
+#echo wget $COMPILERRT_URL
 wget $LLVM_URL
 wget $LIBCXX_URL
-#wget $LIBCXXABI_URL
-wget $COMPILERRT_URL
+wget $LIBCXXABI_URL
+#wget $COMPILERRT_URL
 
 mkdir llvm-source
 mkdir llvm-source/projects
@@ -33,6 +33,7 @@ mkdir llvm-source/projects/libcxxabi
 
 tar -xf llvm-${VERSION}.src.tar.xz -C llvm-source --strip-components=1
 tar -xf libcxx-${VERSION}.src.tar.xz -C llvm-source/projects/libcxx --strip-components=1
+tar -xf libcxxabi-${VERSION}.src.tar.xz -C llvm-source/projects/libcxxabi --strip-components=1
 
 SOURCE=`pwd`/llvm-source
 mkdir llvm-build
@@ -40,36 +41,44 @@ mkdir llvm-build
 # - libc++ versions < 4.x do not have the install-cxxabi and install-cxx targets
 # - only ASAN is enabled for clang/libc++ versions < 4.x
 if [[ $VERSION == *"3."* ]]; then
-    #cd llvm-build
     cmake -B llvm-build \
 	  -DCMAKE_C_COMPILER=clang-$1 \
 	  -DCMAKE_CXX_COMPILER=clang++-$1 \
+	  -DLIBCXX_LIBCXXABI_INCLUDE_PATHS="${SOURCE}/projects/libcxxabi/include/" \
+	  -DLIBCXX_CXX_ABI_INCLUDE_PATH="${SOURCE}/projects/libcxxabi/include/" \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-	  -DLIBCXX_LIBSUPCXX_INCLUDE_PATHS="/usr/include/c++/4.7;/usr/include/x86_64-linux-gnu/c++/4.7" \
-          -DLIBCXX_CXX_ABI='libstdc++' \
+          -DLIBCXX_CXX_ABI='libcxxabi' \
           llvm-source
+    cmake --build llvm-build --target cxxabi
+    cp -r llvm-build/lib/* /usr/lib/
+    cp -r ${SOURCE}/projects/libcxxabi/include/* /usr/include
     cmake --build llvm-build --target cxx
     mkdir -p /usr/lib/llvm-$1/include/c++/v1
+    mkdir -p /usr/include/c++/v1
+    find . -name 'libc++*.so'
     cp -r llvm-build/lib/* /usr/lib/x86_64-linux-gnu
-    cp -r llvm-build/include/c++/v1/* /usr/lib/llvm-$1/include/c++/v1
+    cp -r ${SOURCE}/projects/libcxx/include/* /usr/lib/llvm-$1/include/c++/v1
 else
     ln -s /usr/include/locale.h /usr/include/xlocale.h
     cmake -DCMAKE_C_COMPILER=clang-$1 -DCMAKE_CXX_COMPILER=clang++-$1 \
-	  -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_WITH_INSTALL_RPATH=1 \
           -DCMAKE_MODULE_PATH=${SOURCE}/Modules \
           -DLLVM_INCLUDE_BENCHMARKS=no \
           -DLIBCXX_INCLUDE_BENCHMARKS=no \
-          -DLIBCXX_CXX_ABI='libstdc++' \
-	  -DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=no \
-	  -DLIBCXX_INSTALL_HEADERS=yes \
-	  -DLIBCXX_NEEDS_SITE_CONFIG=no \
-	  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	        -DLIBCXX_LIBCXXABI_INCLUDE_PATHS="${SOURCE}/projects/libcxxabi/include/" \
+          -DLIBCXX_CXX_ABI='libcxxabi' \
+	        -DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=no \
+	        -DLIBCXX_INSTALL_HEADERS=yes \
+	        -DLIBCXX_NEEDS_SITE_CONFIG=no \
+	        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -B llvm-build \
-	  -G Ninja \
+	        -G Ninja \
           llvm-source
+    cmake --build llvm-build --target cxxabi
+    cmake --build llvm-build --target install-cxxabi
+    cp -r ${SOURCE}/projects/libcxxabi/include/* /usr/include
     cmake --build llvm-build --target cxx
     cmake --build llvm-build --target install-cxx
-    cd ..  
 fi
-rm -rf llvm-*
+rm -rf llvm-* *${VERSION}.src.tar.xz
