@@ -40,7 +40,7 @@ mkdir llvm-build
 
 # - libc++ versions < 4.x do not have the install-cxxabi and install-cxx targets
 # - only ASAN is enabled for clang/libc++ versions < 4.x
-if [[ $VERSION == *"3."* ]]; then
+if [[ $VERSION == "3."* ]]; then
     cmake -B llvm-build \
 	  -DCMAKE_C_COMPILER=clang-$1 \
 	  -DCMAKE_CXX_COMPILER=clang++-$1 \
