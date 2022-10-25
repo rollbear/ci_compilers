@@ -27,7 +27,7 @@ RUN apt-get update -qq && \
     ./install-clang.sh ${CLANG_VERSION} && \
     ./install-cmake.sh && \
     ./install-kcov.sh clang-${CLANG_VERSION} clang++-${CLANG_VERSION} && \
-    ${BUILD_LIBCXX} \
+    ${BUILD_LIBCXX} && \
     rm install-clang.sh install-cmake.sh install-libcxx.sh install-kcov.sh
 
 ENV CC              clang-${CLANG_VERSION}
