@@ -17,6 +17,7 @@ RUN apt-get update -qq && \
     libiberty-dev \
     libssl-dev \
     ninja-build \
+    parallel \
     python3 \
     xz-utils \
     zlib1g-dev \

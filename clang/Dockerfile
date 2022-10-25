@@ -20,6 +20,7 @@ RUN apt-get update -qq && \
     libssl-dev \
     make \
     ninja-build \
+    parallel \
     python3 \
     xz-utils \
     zlib1g-dev \
