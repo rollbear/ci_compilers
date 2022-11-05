@@ -21,8 +21,7 @@ echo "Building catch2-v${VERSION} main"
 for STD in ${CXX_STANDARDS}
 do
     PREFIX="/usr/local/catch2-2-c++${STD}${CXXLIB}"
-    echo ${CXX} -I . -std=c++${STD} ${CXXFLAGS} main.cpp -c
-    ${CXX} -I . -std=c++${STD} ${CXXFLAGS} main.cpp -c
+    ${CXX} -I . -std=c++${STD} ${CXXFLAGS} main.cpp -O -g -c
     ar rcs -o libCatch2Main.a main.o
     mkdir -p ${PREFIX}/lib
     mkdir -p ${PREFIX}/include/catch2
