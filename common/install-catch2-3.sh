@@ -27,9 +27,8 @@ do
             -DCMAKE_CXX_STANDARD=${STD} \
             -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
             -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
-            catch2_src -G Ninja
-        cmake --build ${BUILD_DIR}
-        cmake --install ${BUILD_DIR}
+            catch2_src -G Ninja && \
+        cmake --build ${BUILD_DIR} && cmake --install ${BUILD_DIR} || true
     }
 done
 echo "Cleaning up"
