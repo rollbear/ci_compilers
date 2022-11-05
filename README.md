@@ -5,6 +5,24 @@ Each gcc image contains gcc/g++ and corresponding libstdc++.
 
 Each clang image contains clang/clang++ and libc++,libstdc++ with the same version.
 
-All images contain cmake-2.32,2, ninja, kcov-v40.
+All images contain cmake-2.32.2, ninja, kcov-v40 and catch2-2.13.10 and catch2-3.1.1
+
+Catch2 is prebuilt, including a catch2 v2.x and the libraries are installed in separate directories depending on C++ standard and stdlib used.
+
+*Catch2 v2.x*
+
+| directory prefix                           | content                   |
+|--------------------------------------------|---------------------------|
+|/usr/local/catch2-2-c++{11,14,17,20}{libc++}| /include/catch2/catch.hpp |
+|                                            | /lib/libCatch2Main.a      |
+
+*Catch2 v3.x*
+
+| directory prefix                          | content              |
+|-------------------------------------------|----------------------|
+| /usr/local/catch2-3-c++{14,17,20}{libc++} | /include/catch2/*    |
+|                                           | /lib/libCatch2.a     |
+|                                           | /lib/libCatch2Main.a |
 
 Feel free to use for your builds if you wish. However, be warned that they will be updated at any time without warning.
+  

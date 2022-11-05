@@ -15,23 +15,23 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - { clang_version: "3.5", libcxx: "", build_libcxx: "./install-libcxx.sh 3.5 3.5.2 && ", container: $UBUNTU_16_04 }
-          - { clang_version: "3.6", libcxx: "", build_libcxx: "./install-libcxx.sh 3.6 3.6.2 && ", container: $UBUNTU_16_04 }
-          - { clang_version: "3.7", libcxx: "", build_libcxx: "./install-libcxx.sh 3.7 3.7.1 && ", container: $UBUNTU_16_04 } # no sanitizers!
-          - { clang_version: "3.8", libcxx: "", build_libcxx: "./install-libcxx.sh 3.8 3.8.1 &&  ", container: $UBUNTU_16_04 }
-          - { clang_version: "3.9", libcxx: "", build_libcxx: "./install-libcxx.sh 3.9 3.9.1 &&  ", container: $UBUNTU_16_04 }
-          - { clang_version: "4.0", libcxx: "", build_libcxx: "./install-libcxx.sh 4.0 4.0.1 &&  ", container: $UBUNTU_18_04 }
-          - { clang_version: "5.0", libcxx: "", build_libcxx: "./install-libcxx.sh 5.0 5.0.2 &&  ", container: $UBUNTU_18_04 }
-          - { clang_version: "6.0", libcxx: "", build_libcxx: "./install-libcxx.sh 6.0 6.0.1 &&  ", container: $UBUNTU_18_04 }
-          - { clang_version: "7",   libcxx: "", build_libcxx: "./install-libcxx.sh 7 7.1.0 && ", container: $UBUNTU_18_04 }
-          - { clang_version: "8",   libcxx: "", build_libcxx: "./install-libcxx.sh 8 8.0.1 && ", container: $UBUNTU_20_04 }
-          - { clang_version: "9",   libcxx: "", build_libcxx: "./install-libcxx.sh 9 9.0.1 && ", container: $UBUNTU_20_04 }
-          - { clang_version: "10",  libcxx: "", build_libcxx: "./install-libcxx.sh 10 10.0.1 && ", container: $UBUNTU_20_04 }
-          - { clang_version: "11",  libcxx: "", build_libcxx: "./install-libcxx.sh 11 11.1.0 && ", container: $UBUNTU_20_04 }
-          - { clang_version: "12",  libcxx: "", build_libcxx: "./install-libcxx.sh 12 12.0.1 && ", container: $UBUNTU_22_04 }
-          - { clang_version: "13",  libcxx: "", build_libcxx: "./install-libcxx.sh 13 13.0.1 && ", container: $UBUNTU_22_04 }
-          - { clang_version: "14",  libcxx: "", build_libcxx: "./install-libcxx.sh 14 14.0.6 && ", container: $UBUNTU_22_04 }
-          - { clang_version: "15",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04 }
+          - { clang_version: "3.5", libcxx: "", build_libcxx: "./install-libcxx.sh 3.5 3.5.2 && ", container: $UBUNTU_16_04, std: "11" }
+          - { clang_version: "3.6", libcxx: "", build_libcxx: "./install-libcxx.sh 3.6 3.6.2 && ", container: $UBUNTU_16_04, std: "11" }
+          - { clang_version: "3.7", libcxx: "", build_libcxx: "./install-libcxx.sh 3.7 3.7.1 && ", container: $UBUNTU_16_04, std: "11" } # no sanitizers!
+          - { clang_version: "3.8", libcxx: "", build_libcxx: "./install-libcxx.sh 3.8 3.8.1 &&  ", container: $UBUNTU_16_04, std: "11" }
+          - { clang_version: "3.9", libcxx: "", build_libcxx: "./install-libcxx.sh 3.9 3.9.1 &&  ", container: $UBUNTU_16_04, std: "11 14" }
+          - { clang_version: "4.0", libcxx: "", build_libcxx: "./install-libcxx.sh 4.0 4.0.1 &&  ", container: $UBUNTU_18_04, std: "11 14" }
+          - { clang_version: "5.0", libcxx: "", build_libcxx: "./install-libcxx.sh 5.0 5.0.2 &&  ", container: $UBUNTU_18_04, std: "11 14 17" }
+          - { clang_version: "6.0", libcxx: "", build_libcxx: "./install-libcxx.sh 6.0 6.0.1 &&  ", container: $UBUNTU_18_04, std: "11 14 17" }
+          - { clang_version: "7",   libcxx: "", build_libcxx: "./install-libcxx.sh 7 7.1.0 && ", container: $UBUNTU_18_04, std: "11 14 17" }
+          - { clang_version: "8",   libcxx: "", build_libcxx: "./install-libcxx.sh 8 8.0.1 && ", container: $UBUNTU_20_04, std: "11 14 17" }
+          - { clang_version: "9",   libcxx: "", build_libcxx: "./install-libcxx.sh 9 9.0.1 && ", container: $UBUNTU_20_04, std: "11 14 17" }
+          - { clang_version: "10",  libcxx: "", build_libcxx: "./install-libcxx.sh 10 10.0.1 && ", container: $UBUNTU_20_04, std: "11 14 17 20" }
+          - { clang_version: "11",  libcxx: "", build_libcxx: "./install-libcxx.sh 11 11.1.0 && ", container: $UBUNTU_20_04, std: "11 14 17 20" }
+          - { clang_version: "12",  libcxx: "", build_libcxx: "./install-libcxx.sh 12 12.0.1 && ", container: $UBUNTU_22_04, std: "11 14 17 20" }
+          - { clang_version: "13",  libcxx: "", build_libcxx: "./install-libcxx.sh 13 13.0.1 && ", container: $UBUNTU_22_04, std: "11 14 17 20" }
+          - { clang_version: "14",  libcxx: "", build_libcxx: "./install-libcxx.sh 14 14.0.6 && ", container: $UBUNTU_22_04, std: "11 14 17 20" }
+          - { clang_version: "15",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04, std: "11 14 17 20" }
 
     runs-on: ubuntu-latest
     env:
@@ -61,6 +61,7 @@ jobs:
              --build-arg LIBCXX=${{ matrix.version.libcxx }} \
              --build-arg CLANG_VERSION=${{ matrix.version.clang_version }} \
              --build-arg BUILD_LIBCXX="${{ matrix.version.build_libcxx }}" \
+             --build-arg CXX_STANDARDS="${{ matrix.version.std }}" \
              --platform linux/amd64 --tag $IMAGE -f $GITHUB_WORKSPACE/clang/Dockerfile .
 
   gcc:
@@ -68,16 +69,16 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - { gcc_version: "4.8", container: $UBUNTU_18_04 }
-          - { gcc_version: "4.9", container: $UBUNTU_16_04 }
-          - { gcc_version: "5",   container: $UBUNTU_18_04 }
-          - { gcc_version: "6",   container: $UBUNTU_18_04 }
-          - { gcc_version: "7",   container: $UBUNTU_20_04 }
-          - { gcc_version: "8",   container: $UBUNTU_20_04 }
-          - { gcc_version: "9",   container: $UBUNTU_22_04 }
-          - { gcc_version: "10",  container: $UBUNTU_22_04 }
-          - { gcc_version: "11",  container: $UBUNTU_22_04 }
-          - { gcc_version: "12",  container: $UBUNTU_22_04 }
+          - { gcc_version: "4.8", container: $UBUNTU_18_04, std: "11" }
+          - { gcc_version: "4.9", container: $UBUNTU_16_04, std: "11" }
+          - { gcc_version: "5",   container: $UBUNTU_18_04, std: "11 14 17" }
+          - { gcc_version: "6",   container: $UBUNTU_18_04, std: "11 14 17" }
+          - { gcc_version: "7",   container: $UBUNTU_20_04, std: "11 14 17" }
+          - { gcc_version: "8",   container: $UBUNTU_20_04, std: "11 14 17" }
+          - { gcc_version: "9",   container: $UBUNTU_22_04, std: "11 14 17" }
+          - { gcc_version: "10",  container: $UBUNTU_22_04, std: "11 14 17 20" }
+          - { gcc_version: "11",  container: $UBUNTU_22_04, std: "11 14 17 20" }
+          - { gcc_version: "12",  container: $UBUNTU_22_04, std: "11 14 17 20" }
 
     runs-on: ubuntu-latest
     env:
@@ -105,4 +106,5 @@ jobs:
           docker buildx build --push \
              --build-arg CONTAINER_ID=${{ matrix.version.container }} \
              --build-arg GCC_VERSION=${{ matrix.version.gcc_version }} \
+             --build-arg CXX_STANDARDS="${{ matrix.version.std }}" \
              --platform linux/amd64 --tag $IMAGE -f $GITHUB_WORKSPACE/gcc/Dockerfile .

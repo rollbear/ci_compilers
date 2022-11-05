@@ -31,6 +31,17 @@ RUN apt-get update -qq && \
     ${BUILD_LIBCXX} && \
     rm install-clang.sh install-cmake.sh install-libcxx.sh install-kcov.sh
 
+ARG CLANG_VERSION
+ARG CXX_STANDARDS
+COPY common/install-catch2-3.sh common/install-catch2-2.sh .
+RUN ./install-catch2-3.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" && \
+    ./install-catch2-3.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "" && \
+    ./install-catch2-2.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" && \
+    ./install-catch2-2.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "" && \
+    rm install-catch2-3.sh && \
+    rm install-catch2-2.sh
+
+
 ENV CC              clang-${CLANG_VERSION}
 ENV CXX             clang++-${CLANG_VERSION}
 ENV CMAKE_GENERATOR Ninja
