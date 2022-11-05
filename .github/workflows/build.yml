@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - { clang_version: "3.5", libcxx: "", build_libcxx: "./install-libcxx.sh 3.5 3.5.2 && ", container: $UBUNTU_16_04, std: "11 14" }
+          - { clang_version: "3.5", libcxx: "", build_libcxx: "./install-libcxx.sh 3.5 3.5.2 && ", container: $UBUNTU_16_04, std: "11" }
           - { clang_version: "3.6", libcxx: "", build_libcxx: "./install-libcxx.sh 3.6 3.6.2 && ", container: $UBUNTU_16_04, std: "11 14" }
           - { clang_version: "3.7", libcxx: "", build_libcxx: "./install-libcxx.sh 3.7 3.7.1 && ", container: $UBUNTU_16_04, std: "11 14" } # no sanitizers!
           - { clang_version: "3.8", libcxx: "", build_libcxx: "./install-libcxx.sh 3.8 3.8.1 &&  ", container: $UBUNTU_16_04, std: "11 14" }
