@@ -41,6 +41,13 @@ RUN ./install-catch2-3.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" &
     rm install-catch2-3.sh && \
     rm install-catch2-2.sh
 
+ARG CLANG_VERSION
+ARG CXX_STANDARDS
+COPY common/install-fmt.sh .
+RUN ./install-fmt.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" && \
+    ./install-fmt.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "" && \
+    rm install-fmt.sh
+
 
 ENV CC              clang-${CLANG_VERSION}
 ENV CXX             clang++-${CLANG_VERSION}

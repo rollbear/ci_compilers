@@ -34,6 +34,12 @@ RUN ./install-catch2-3.sh g++-${GCC_VERSION} "${CXX_STANDARDS}" "" && \
     rm install-catch2-3.sh && \
     rm install-catch2-2.sh
 
+ARG GCC_VERSION
+ARG CXX_STANDARDS
+COPY common/install-fmt.sh .
+RUN ./install-fmt.sh g++-${GCC_VERSION} "${CXX_STANDARDS}" "" && \
+    rm install-fmt.sh
+
 ENV CC              gcc-${GCC_VERSION}
 ENV CXX             g++-${GCC_VERSION}
 ENV CMAKE_GENERATOR Ninja
