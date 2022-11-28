@@ -11,6 +11,7 @@ RUN apt-get update -qq && \
     binutils-dev \
     ca-certificates \
     g++-${GCC_VERSION} \
+    gdb \
     git \
     libcurl4-openssl-dev \
     libdw-dev \

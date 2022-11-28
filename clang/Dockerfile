@@ -12,6 +12,7 @@ RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
     binutils-dev \
     ca-certificates \
+    gdb \
     git \
     ${LIBCXX} \
     libcurl4-openssl-dev \
