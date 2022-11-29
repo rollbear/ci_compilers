@@ -34,7 +34,7 @@ RUN apt-get update -qq && \
 
 ARG CLANG_VERSION
 ARG CXX_STANDARDS
-COPY common/install-catch2-3.sh common/install-catch2-2.sh .
+COPY common/install-catch2-3.sh common/install-catch2-2.sh ./
 RUN ./install-catch2-3.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" && \
     ./install-catch2-3.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "" && \
     ./install-catch2-2.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" && \
@@ -44,7 +44,7 @@ RUN ./install-catch2-3.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" &
 
 ARG CLANG_VERSION
 ARG CXX_STANDARDS
-COPY common/install-fmt.sh .
+COPY common/install-fmt.sh ./
 RUN ./install-fmt.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" && \
     ./install-fmt.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "" && \
     rm install-fmt.sh
@@ -53,3 +53,4 @@ RUN ./install-fmt.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" && \
 ENV CC              clang-${CLANG_VERSION}
 ENV CXX             clang++-${CLANG_VERSION}
 ENV CMAKE_GENERATOR Ninja
+ENV PATH            /usr/lib/llvm-${CLANG_VERSION}/bin:${PATH}

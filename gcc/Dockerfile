@@ -3,7 +3,7 @@ FROM ${CONTAINER_ID}
 LABEL maintainer="Björn Fahller <bjorn@fahller.se>"
 
 WORKDIR /root
-COPY common/install-cmake.sh common/install-kcov.sh test/test.cpp ./
+COPY test/test.cpp ./
 
 ARG GCC_VERSION
 RUN apt-get update -qq && \
@@ -22,14 +22,23 @@ RUN apt-get update -qq && \
     python3 \
     xz-utils \
     zlib1g-dev \
-    wget && \
-    ./install-cmake.sh && \
-    ./install-kcov.sh gcc-${GCC_VERSION} g++-${GCC_VERSION} && \
-    rm install-cmake.sh install-kcov.sh
+    wget
+
+ARG GCC_VERSION
+RUN bash -c 'for f in /usr/bin/*-${GCC_VERSION}; do echo ln -s $f /usr/bin/`basename $f -${GCC_VERSION}`; ln -s $f /usr/bin/`basename $f -${GCC_VERSION}`; done'
+
+COPY common/install-cmake.sh ./
+RUN ./install-cmake.sh && \
+    rm install-cmake.sh
+
+COPY common/install-kcov.sh ./
+ARG GCC_VERSION
+RUN ./install-kcov.sh gcc-${GCC_VERSION} g++-${GCC_VERSION} && \
+    rm  install-kcov.sh
 
 ARG GCC_VERSION
 ARG CXX_STANDARDS
-COPY common/install-catch2-3.sh common/install-catch2-2.sh .
+COPY common/install-catch2-3.sh common/install-catch2-2.sh ./
 RUN ./install-catch2-3.sh g++-${GCC_VERSION} "${CXX_STANDARDS}" "" && \
     ./install-catch2-2.sh g++-${GCC_VERSION} "${CXX_STANDARDS}" "" && \
     rm install-catch2-3.sh && \
@@ -37,7 +46,7 @@ RUN ./install-catch2-3.sh g++-${GCC_VERSION} "${CXX_STANDARDS}" "" && \
 
 ARG GCC_VERSION
 ARG CXX_STANDARDS
-COPY common/install-fmt.sh .
+COPY common/install-fmt.sh ./
 RUN ./install-fmt.sh g++-${GCC_VERSION} "${CXX_STANDARDS}" "" && \
     rm install-fmt.sh
 
