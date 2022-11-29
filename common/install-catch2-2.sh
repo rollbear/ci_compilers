@@ -17,9 +17,9 @@ DONE
 
 CXXFLAGS=${CXXLIB:+"-stdlib=${CXXLIB}"}
 
-echo "Building catch2-v${VERSION} main"
 for STD in ${CXX_STANDARDS}
 do
+    echo "Building catch2-v${VERSION} C++${STD} ${CXXLIB}"
     PREFIX="/usr/local/catch2-2-c++${STD}${CXXLIB}"
     ${CXX} -I . -std=c++${STD} ${CXXFLAGS} main.cpp -O -g -c
     ar rcs -o libCatch2Main.a main.o
