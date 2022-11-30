@@ -5,7 +5,14 @@ Each gcc image contains gcc/g++ and corresponding libstdc++.
 
 Each clang image contains clang/clang++ and libc++,libstdc++ with the same version.
 
-All images contain cmake-2.32.2, ninja, kcov-v40 and catch2-2.13.10 and catch2-3.1.1
+All images contain:
+* cmake-2.25.0
+* ninja
+* kcov-v40
+* catch2-2.13.10 
+* catch2-3.2.0
+* fmt-8.1.1
+* fmt-9.1.0
 
 Catch2 is prebuilt, including a catch2 v2.x and the libraries are installed in separate directories depending on C++ standard and stdlib used.
 
@@ -24,5 +31,20 @@ Catch2 is prebuilt, including a catch2 v2.x and the libraries are installed in s
 |                                           | /lib/libCatch2.a     |
 |                                           | /lib/libCatch2Main.a |
 
-Feel free to use for your builds if you wish. However, be warned that they will be updated at any time without warning.
+*fmt-8.x*
+
+| directory | content |
+|-----------|---------|
+| /usr/local/fmt-8-c++{11,14,17,20}{libc++} | /include/fmt/* |
+|                                           | /lib/libfmt.a  |
+
+*fmt-9.x*
+
+| directory                                 | content        |
+|-------------------------------------------|----------------|
+| /usr/local/fmt-9-c++{11,14,17,20}{libc++} | /include/fmt/* |
+|                                           | /lib/libfmt.a  |
+
+Feel free to use for your builds if you wish. However, be warned that they will
+be updated at any time without warning.
   
