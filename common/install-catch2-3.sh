@@ -19,7 +19,7 @@ for STD in ${CXX_STANDARDS}
 do
     [ "${STD}" == "11" ] || { # catch2 v3 does not support C++11
         echo "Installing catch2-${VERSION} C++${STD} ${CXXLIB}"
-        PREFIX="/usr/local/catch2-3-c++${STD}${CXXLIB}"
+        PREFIX="/usr/local/lib/c++${STD}${CXXLIB}/catch2-3"
         BUILD_DIR="catch2_build_${STD}"
         mkdir ${BUILD_DIR}
         cmake -B ${BUILD_DIR} \

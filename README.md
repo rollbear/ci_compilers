@@ -14,37 +14,18 @@ All images contain:
 * fmt-8.1.1
 * fmt-9.1.0
 
-Catch2 is prebuilt, including a catch2 v2.x and the libraries are installed in separate directories depending on C++ standard and stdlib used.
+The installed libraries, Catch2-2, Catch2-3, fmt-8 and fmt-9 are located under
+`/usr/local/lib/c++{11,14,17,20}{libc++}` and they all have `CMake` packages,
+so for example, to build with C++17 and libc++, run `cmake` for your program
+with:
+```l
+-D CMAKE_PREFIX_PATH=/usr/local/lib/c++17libc++ \
+-D CMAKE_CXX_STANDARD=17
+```
 
-*Catch2 v2.x*
-
-| directory prefix                           | content                   |
-|--------------------------------------------|---------------------------|
-|/usr/local/catch2-2-c++{11,14,17,20}{libc++}| /include/catch2/catch.hpp |
-|                                            | /lib/libCatch2Main.a      |
-
-*Catch2 v3.x*
-
-| directory prefix                          | content              |
-|-------------------------------------------|----------------------|
-| /usr/local/catch2-3-c++{14,17,20}{libc++} | /include/catch2/*    |
-|                                           | /lib/libCatch2.a     |
-|                                           | /lib/libCatch2Main.a |
-
-*fmt-8.x*
-
-| directory | content |
-|-----------|---------|
-| /usr/local/fmt-8-c++{11,14,17,20}{libc++} | /include/fmt/* |
-|                                           | /lib/libfmt.a  |
-
-*fmt-9.x*
-
-| directory                                 | content        |
-|-------------------------------------------|----------------|
-| /usr/local/fmt-9-c++{11,14,17,20}{libc++} | /include/fmt/* |
-|                                           | /lib/libfmt.a  |
+If your `CMakeLists.txt` then calls, for example `find_package(fmt 9)`,
+it will find the C++17 version of `fmt-9` compiled with `libc++`.
 
 Feel free to use for your builds if you wish. However, be warned that they will
-be updated at any time without warning.
-  
+be updated at any time without warning. You are probably better off using this
+as a starting point when creating your own version that you have control over.

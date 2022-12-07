@@ -21,7 +21,7 @@ install() {
 
     for STD in ${CXX_STANDARDS}
     do
-        PREFIX="/usr/local/fmt-${MAJOR}-c++${STD}${CXXLIB}"
+        PREFIX="/usr/local/lib/c++${STD}${CXXLIB}/fmt${MAJOR}"
         BUILD_DIR="fmt_build_${STD}"
         mkdir ${BUILD_DIR}
         cmake -B ${BUILD_DIR} \
