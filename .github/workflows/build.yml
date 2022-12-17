@@ -7,7 +7,6 @@ env:
   UBUNTU_22_04: "ubuntu:22.04@sha256:35fb073f9e56eb84041b0745cb714eff0f7b225ea9e024f703cab56aaa5c7720"
 on:
   push:
-    branches: [main]
 
 jobs:
   clang:
@@ -56,7 +55,9 @@ jobs:
 
       - name: Build image
         run: |
-          docker buildx build --push \
+          PUSH=""
+          [ ${GITHUB_REF_NAME} == "main" ] && PUSH="--push"
+          docker buildx build ${PUSH} \
              --build-arg CONTAINER_ID=${{ matrix.version.container }} \
              --build-arg LIBCXX=${{ matrix.version.libcxx }} \
              --build-arg CLANG_VERSION=${{ matrix.version.clang_version }} \
@@ -103,7 +104,9 @@ jobs:
 
       - name: Build image
         run: |
-          docker buildx build --push \
+          PUSH=""
+          [ ${GITHUB_REF_NAME} == "main" ] && PUSH="--push"
+          docker buildx build ${PUSH} \
              --build-arg CONTAINER_ID=${{ matrix.version.container }} \
              --build-arg GCC_VERSION=${{ matrix.version.gcc_version }} \
              --build-arg CXX_STANDARDS="${{ matrix.version.std }}" \
