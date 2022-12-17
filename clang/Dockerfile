@@ -63,6 +63,13 @@ RUN ./install-fmt.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" && \
     ./install-fmt.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "" && \
     rm install-fmt.sh
 
+ARG GCC_VERSION
+ARG CXX_STANDARDS
+COPY common/install-benchmark.sh ./
+RUN ./install-benchmark.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" && \
+    ./install-benchmark.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "" && \
+    rm install-benchmark.sh
+
 
 ENV CC              clang-${CLANG_VERSION}
 ENV CXX             clang++-${CLANG_VERSION}

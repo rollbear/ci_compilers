@@ -50,6 +50,12 @@ COPY common/install-fmt.sh ./
 RUN ./install-fmt.sh g++-${GCC_VERSION} "${CXX_STANDARDS}" "" && \
     rm install-fmt.sh
 
+ARG GCC_VERSION
+ARG CXX_STANDARDS
+COPY common/install-benchmark.sh ./
+RUN ./install-benchmark.sh g++-${GCC_VERSION} "${CXX_STANDARDS}" "" && \
+    rm install-benchmark.sh
+
 ENV CC              gcc-${GCC_VERSION}
 ENV CXX             g++-${GCC_VERSION}
 ENV CMAKE_GENERATOR Ninja
