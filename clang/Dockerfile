@@ -11,7 +11,6 @@ RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
     binutils-dev \
     ca-certificates \
-    gcc \
     gdb \
     git \
     ${LIBCXX} \
