@@ -3,7 +3,6 @@ set -eou pipefail
 
 VERSION="2.13.10"
 
-CATCH_DIR=/usr/include/catch2-2
 CXX=$1
 CXX_STANDARDS="$2"
 CXXLIB="$3"
@@ -24,7 +23,7 @@ do
           -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
           -DCATCH_BUILD_TESTING=off \
           -DCATCH_BUILD_STATIC_LIBRARY=on \
-          catch2_src && \
+          catch2_src -G Ninja && \
     cmake --build catch2-build && \
     cmake --install catch2-build && \
     rm -rf catch2-build
