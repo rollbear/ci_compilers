@@ -6,7 +6,7 @@ Each gcc image contains gcc/g++ and corresponding libstdc++.
 Each clang image contains clang/clang++ and libc++,libstdc++ with the same version.
 
 All images contain:
-* cmake-2.25.0
+* cmake-2.25.2
 * ninja
 * kcov-v40
 * catch2-2.13.10 
