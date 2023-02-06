@@ -3,7 +3,7 @@ FROM ${CONTAINER_ID}
 LABEL maintainer="Björn Fahller <bjorn@fahller.se>"
 
 WORKDIR /root
-COPY clang/install-libcxx.sh test/test.cpp ./
+COPY test/test.cpp ./
 
 ARG LIBCXX
 ARG BUILD_LIBCXX
