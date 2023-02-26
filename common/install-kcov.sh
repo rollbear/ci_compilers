@@ -4,7 +4,7 @@ set -eou pipefail
 CC=$1
 CXX=$2
 
-VERSION="v40"
+VERSION="v41"
 
 
 echo "Downloading kcov-${VERSION}"
