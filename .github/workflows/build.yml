@@ -31,7 +31,7 @@ jobs:
           - { clang_version: "13",  libcxx: "", build_libcxx: "./install-libcxx.sh 13 13.0.1 && ", container: $UBUNTU_22_04, std: "11 14 17 20" }
           - { clang_version: "14",  libcxx: "", build_libcxx: "./install-libcxx.sh 14 14.0.0 && ", container: $UBUNTU_22_04, std: "11 14 17 20" }
           - { clang_version: "15",  libcxx: "", build_libcxx: "./install-libcxx.sh 15 15.0.6 && ", container: $UBUNTU_22_04, std: "11 14 17 20" }
-          - { clang_version: "16",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04, std: "11 14 17 20" }
+          - { clang_version: "16",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04, std: "11 14 17 20 23" }
 
     runs-on: ubuntu-latest
     env:
