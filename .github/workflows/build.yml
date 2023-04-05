@@ -80,7 +80,7 @@ jobs:
           - { gcc_version: "9",   container: $UBUNTU_22_04, std: "11 14 17" }
           - { gcc_version: "10",  container: $UBUNTU_22_04, std: "11 14 17 20" }
           - { gcc_version: "11",  container: $UBUNTU_22_04, std: "11 14 17 20" }
-          - { gcc_version: "12",  container: $UBUNTU_22_04, std: "11 14 17 20" }
+          - { gcc_version: "12",  container: $UBUNTU_22_04, std: "11 14 17 20 23" }
 
     runs-on: ubuntu-latest
     env:
