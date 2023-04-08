@@ -20,6 +20,7 @@ RUN apt-get update -qq && \
     ninja-build \
     parallel \
     python3 \
+    valgrind \
     xz-utils \
     zlib1g-dev \
     wget

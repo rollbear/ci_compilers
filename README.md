@@ -8,6 +8,7 @@ Each clang image contains clang/clang++ and libc++,libstdc++ with the same versi
 All images contain:
 * cmake-2.25.2
 * ninja
+* valgrind
 * kcov-v41
 * catch2-2.13.10 
 * catch2-3.3.2
