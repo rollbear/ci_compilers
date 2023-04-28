@@ -5,6 +5,7 @@ env:
   UBUNTU_18_04: "ubuntu:18.04@sha256:40b84b75884ff39e4cac4bf62cb9678227b1fbf9dbe3f67ef2a6b073aa4bb529"
   UBUNTU_20_04: "ubuntu:20.04@sha256:9c2004872a3a9fcec8cc757ad65c042de1dad4da27de4c70739a6e36402213e3"
   UBUNTU_22_04: "ubuntu:22.04@sha256:35fb073f9e56eb84041b0745cb714eff0f7b225ea9e024f703cab56aaa5c7720"
+  UBUNTU_23_04: "ubuntu:23.04@sha256:2f18a21d414ad3c0a8eea08fec8f98d730c5c02ddb0d5fef9c60ca72ac53329c"
 on:
   push:
 
@@ -81,6 +82,7 @@ jobs:
           - { gcc_version: "10",  container: $UBUNTU_22_04, std: "11 14 17 20" }
           - { gcc_version: "11",  container: $UBUNTU_22_04, std: "11 14 17 20" }
           - { gcc_version: "12",  container: $UBUNTU_22_04, std: "11 14 17 20 23" }
+          - { gcc_version: "13",  container: $UBUNTU_23_04, std: "11 14 17 20 23" }
 
     runs-on: ubuntu-latest
     env:
