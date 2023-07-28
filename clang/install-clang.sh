@@ -15,3 +15,7 @@ fetch_clang () {
 }
 
 apt install -y clang-${VERSION} || fetch_clang clang-${VERSION}
+for f in /usr/bin/llvm*-${VERSION}
+do
+  ln -s $f `echo $f | sed "s/-${VERSION}//"`
+done
