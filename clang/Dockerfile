@@ -70,6 +70,7 @@ RUN ./install-benchmark.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" 
     ./install-benchmark.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "" && \
     rm install-benchmark.sh
 
+RUN apt-get clean
 
 ENV CC              clang-${CLANG_VERSION}
 ENV CXX             clang++-${CLANG_VERSION}

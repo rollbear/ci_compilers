@@ -57,6 +57,8 @@ COPY common/install-benchmark.sh ./
 RUN ./install-benchmark.sh g++-${GCC_VERSION} "${CXX_STANDARDS}" "" && \
     rm install-benchmark.sh
 
+RUN apt-get clean
+
 ENV CC              gcc-${GCC_VERSION}
 ENV CXX             g++-${GCC_VERSION}
 ENV CMAKE_GENERATOR Ninja
