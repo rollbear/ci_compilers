@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eou pipefail
 
-readonly VERSION=v1.7.1
+readonly VERSION=v1.8.3
 readonly CXX=$1
 readonly CXX_STANDARDS="$2"
 readonly CXXLIB=$3
@@ -25,6 +25,7 @@ do
           -DCMAKE_BUILD_TYPE=Release \
           -DHAVE_STD_REGEX=ON \
           -DBENCHMARK_ENABLE_TESTING=NO \
+          -DCMAKE_CXX_FLAGS="-Wno-error=shadow" \
           -S benchmark_src \
           -G Ninja &&
     cmake --build build && cmake --install build && rm -r build
