@@ -4,8 +4,8 @@ set -eou pipefail
 CC=$1
 CXX=$2
 
-VERSION="v41"
 
+(echo "" | $CXX -std=c++17 -E - ) 2>&1 > /dev/null && VERSION="v42" || VERSION="v41"
 
 echo "Downloading kcov-${VERSION}"
 wget -nv -O kcov_src.tar.gz "https://github.com/SimonKagstrom/kcov/archive/refs/tags/${VERSION}.tar.gz"
