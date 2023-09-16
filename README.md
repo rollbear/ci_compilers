@@ -11,7 +11,7 @@ All images contain:
 * valgrind
 * kcov-v41
 * catch2-2.13.10 
-* catch2-3.3.2
+* catch2-3.4.0
 * fmt-8.1.1
 * fmt-9.1.0
 * benchmark-v1.7.1
