@@ -3,6 +3,14 @@ set -eou pipefail
 
 VERSION=$1
 
+MAJOR=${VERSION%%.*}
+
+if [ $MAJOR -ge 6 ]
+then
+    FUZZER="libfuzzer-${VERSION}-dev"
+else
+    FUZZER=""
+fi
 
 fetch_clang () {
     source /etc/lsb-release
@@ -11,10 +19,11 @@ fetch_clang () {
     apt-add-repository "deb http://apt.llvm.org/${DISTRIB_CODENAME}/ llvm-toolchain-${DISTRIB_CODENAME}-$VERSION main"
     apt-add-repository "deb-src http://apt.llvm.org/${DISTRIB_CODENAME}/ llvm-toolchain-${DISTRIB_CODENAME}-$VERSION main"
     apt update
-    apt install -y clang-$VERSION libc++-$VERSION-dev libc++abi-${VERSION}-dev libfuzzer-$VERSION-dev
+    apt install -y clang-$VERSION libc++-$VERSION-dev libc++abi-${VERSION}-dev ${FUZZER}
+
 }
 
-apt install -y clang-${VERSION} || fetch_clang clang-${VERSION}
+apt install -y clang-${VERSION} ${FUZZER}|| fetch_clang clang-${VERSION}
 for f in /usr/bin/llvm*-${VERSION}
 do
   ln -s $f `echo $f | sed "s/-${VERSION}//"`
