@@ -14,10 +14,10 @@ All images contain:
 * catch2-3.5.1
 * fmt-8.1.1
 * fmt-9.1.0
-* fmt-10.1.1
+* fmt-10.2.0
 * benchmark-v1.8.3
 
-The installed libraries, Catch2-2, Catch2-3, fmt-8 and fmt-9 are located under
+The installed libraries are located under
 `/usr/local/lib/c++{11,14,17,20,23}{libc++}` and they all have `CMake` packages,
 so for example, to build with C++17 and libc++, run `cmake` for your program
 with:
