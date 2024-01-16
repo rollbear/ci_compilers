@@ -14,7 +14,7 @@ All images contain:
 * catch2-3.5.2
 * fmt-8.1.1
 * fmt-9.1.0
-* fmt-10.2.0
+* fmt-10.2.1
 * benchmark-v1.8.3
 
 The installed libraries are located under
