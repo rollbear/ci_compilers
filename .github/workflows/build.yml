@@ -35,6 +35,7 @@ jobs:
           - { clang_version: "15",  libcxx: "", build_libcxx: "./install-libcxx.sh 15 15.0.7 && ", container: $UBUNTU_22_04, std: "11 14 17 20" }
           - { clang_version: "16",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04, std: "11 14 17 20 23" }
           - { clang_version: "17",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04, std: "11 14 17 20 23" }
+          - { clang_version: "18",  libcxx: "", build_libcxx: "", container: $UBUNTU_24_04, std: "11 14 17 20 23" }
 
     runs-on: ubuntu-latest
     env:
