@@ -86,6 +86,7 @@ jobs:
           - { gcc_version: "11",  container: $UBUNTU_22_04, std: "11 14 17 20" }
           - { gcc_version: "12",  container: $UBUNTU_22_04, std: "11 14 17 20 23" }
           - { gcc_version: "13",  container: $UBUNTU_23_04, std: "11 14 17 20 23" }
+          - { gcc_version: "14",  container: $UBUNTU_24_04, std: "11 14 17 20 23" }
 
     runs-on: ubuntu-latest
     env:
