@@ -12,6 +12,13 @@ else
     FUZZER=""
 fi
 
+if [ $MAJOR -ge 18 ]
+then
+  LIBCXX="libc++-${VERSION}-dev"
+else
+  LIBCXX=""
+fi
+
 fetch_clang () {
     source /etc/lsb-release
     apt install -y software-properties-common
@@ -23,7 +30,8 @@ fetch_clang () {
 
 }
 
-apt install -y clang-${VERSION} ${FUZZER}|| fetch_clang clang-${VERSION}
+
+apt install -y clang-${VERSION} ${LIBCXX} ${FUZZER}|| fetch_clang clang-${VERSION}
 for f in /usr/bin/llvm*-${VERSION}
 do
   ln -s $f `echo $f | sed "s/-${VERSION}//"`
