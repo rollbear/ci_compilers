@@ -1,11 +1,12 @@
 name: Build and publish docker images
 
 env:
-  UBUNTU_16_04: "ubuntu:16.04@sha256:91bd29a464fdabfcf44e29e1f2a5f213c6dfa750b6290e40dd6998ac79da3c41"
-  UBUNTU_18_04: "ubuntu:18.04@sha256:40b84b75884ff39e4cac4bf62cb9678227b1fbf9dbe3f67ef2a6b073aa4bb529"
-  UBUNTU_20_04: "ubuntu:20.04@sha256:9c2004872a3a9fcec8cc757ad65c042de1dad4da27de4c70739a6e36402213e3"
-  UBUNTU_22_04: "ubuntu:22.04@sha256:35fb073f9e56eb84041b0745cb714eff0f7b225ea9e024f703cab56aaa5c7720"
-  UBUNTU_23_04: "ubuntu:23.04@sha256:2f18a21d414ad3c0a8eea08fec8f98d730c5c02ddb0d5fef9c60ca72ac53329c"
+  UBUNTU_16_04: "ubuntu:16.04@sha256:1f1a2d56de1d604801a9671f301190704c25d604a416f59e03c04f5c6ffee0d6"
+  UBUNTU_18_04: "ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98"
+  UBUNTU_20_04: "ubuntu:20.04@sha256:33a5cc25d22c45900796a1aca487ad7a7cb09f09ea00b779e3b2026b4fc2faba"
+  UBUNTU_22_04: "ubuntu:22.04@sha256:0bced47fffa3361afa981854fcabcd4577cd43cebbb808cea2b1f33a3dd7f508"
+  UBUNTU_23_04: "ubuntu:23.04@sha256:7a520eeb6c18bc6d32a21bb7edcf673a7830813c169645d51c949cecb62387d0"
+  UBUNTU_24_04: "ubuntu:24.04@sha256:36fa0c7153804946e17ee951fdeffa6a1c67e5088438e5b90de077de5c600d4c"
 on:
   push:
 
