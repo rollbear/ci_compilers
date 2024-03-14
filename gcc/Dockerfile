@@ -24,6 +24,7 @@ RUN apt-get update -qq && \
     xz-utils \
     zlib1g-dev \
     wget
+RUN apt-get install -y --no-install-recommends gpg gpg-agent || true
 
 ARG GCC_VERSION
 RUN bash -c 'for f in /usr/bin/*-${GCC_VERSION}; do echo ln -s $f /usr/bin/`basename $f -${GCC_VERSION}`; ln -s $f /usr/bin/`basename $f -${GCC_VERSION}`; done'

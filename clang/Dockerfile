@@ -26,6 +26,7 @@ RUN apt-get update -qq && \
     xz-utils \
     zlib1g-dev \
     wget
+RUN apt-get install -y --no-install-recommends gpg gpg-agent || true
 
 COPY clang/install-clang.sh ./
 ARG CLANG_VERSION
