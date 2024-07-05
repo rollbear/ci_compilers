@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eou pipefail
 
-readonly VERSION=v1.8.3
+readonly VERSION=v1.8.4
 readonly CXX=$1
 readonly CXX_STANDARDS="$2"
 readonly CXXLIB=$3

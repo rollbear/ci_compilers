@@ -16,7 +16,7 @@ All images contain:
 * fmt-9.1.0
 * fmt-10.2.1
 * fmt-11.0.0
-* benchmark-v1.8.3
+* benchmark-v1.8.4
 
 The installed libraries are located under
 `/usr/local/lib/c++{11,14,17,20,23}{libc++}` and they all have `CMake` packages,
