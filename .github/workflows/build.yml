@@ -5,7 +5,6 @@ env:
   UBUNTU_18_04: "ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98"
   UBUNTU_20_04: "ubuntu:20.04@sha256:33a5cc25d22c45900796a1aca487ad7a7cb09f09ea00b779e3b2026b4fc2faba"
   UBUNTU_22_04: "ubuntu:22.04@sha256:0bced47fffa3361afa981854fcabcd4577cd43cebbb808cea2b1f33a3dd7f508"
-  UBUNTU_23_04: "ubuntu:23.04@sha256:7a520eeb6c18bc6d32a21bb7edcf673a7830813c169645d51c949cecb62387d0"
   UBUNTU_24_04: "ubuntu:24.04@sha256:36fa0c7153804946e17ee951fdeffa6a1c67e5088438e5b90de077de5c600d4c"
 on:
   push:
@@ -35,7 +34,7 @@ jobs:
           - { clang_version: "15",  libcxx: "", build_libcxx: "./install-libcxx.sh 15 15.0.7 && ", container: $UBUNTU_22_04, std: "11 14 17 20" }
           - { clang_version: "16",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04, std: "11 14 17 20 23" }
           - { clang_version: "17",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04, std: "11 14 17 20 23" }
-          - { clang_version: "18",  libcxx: "", build_libcxx: "", container: $UBUNTU_23_04, std: "11 14 17 20 23" }
+          - { clang_version: "18",  libcxx: "", build_libcxx: "", container: $UBUNTU_24_04, std: "11 14 17 20 23" }
 
     runs-on: ubuntu-latest
     env:
@@ -85,7 +84,7 @@ jobs:
           - { gcc_version: "10",  container: $UBUNTU_22_04, std: "11 14 17 20" }
           - { gcc_version: "11",  container: $UBUNTU_22_04, std: "11 14 17 20" }
           - { gcc_version: "12",  container: $UBUNTU_22_04, std: "11 14 17 20 23" }
-          - { gcc_version: "13",  container: $UBUNTU_23_04, std: "11 14 17 20 23" }
+          - { gcc_version: "13",  container: $UBUNTU_24_04, std: "11 14 17 20 23" }
           - { gcc_version: "14",  container: $UBUNTU_24_04, std: "11 14 17 20 23" }
 
     runs-on: ubuntu-latest
