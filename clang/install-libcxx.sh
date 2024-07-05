@@ -5,7 +5,7 @@ set -e
 VERSION=$2
 
 MAJOR=$(echo $VERSION | sed 's/\..*//')
-
+apt install make
 echo "Fetching libc++/libc++abi version: ${VERSION}..."
 if [ ${MAJOR} -ge 8 ]; then
     BASE_URL="https://github.com/llvm/llvm-project/releases/download/llvmorg-"
@@ -79,7 +79,6 @@ else
           -DLIBCXX_NEEDS_SITE_CONFIG=no \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -B llvm-build \
-          -G Ninja \
           llvm-source
     cmake --build llvm-build --target cxxabi
     cmake --build llvm-build --target install-cxxabi

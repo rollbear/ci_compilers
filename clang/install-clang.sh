@@ -12,11 +12,9 @@ else
     FUZZER=""
 fi
 
-if [ $MAJOR -ge 18 ]
+if [ -z "$LIBCXX" -a $MAJOR -ge 18 ]
 then
   LIBCXX="libc++-${VERSION}-dev"
-else
-  LIBCXX=""
 fi
 
 fetch_clang () {

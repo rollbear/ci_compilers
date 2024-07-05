@@ -22,8 +22,8 @@ jobs:
           - { clang_version: "3.9", libcxx: "", build_libcxx: "./install-libcxx.sh 3.9 3.9.1 &&  ", container: $UBUNTU_16_04, std: "11 14" }
           - { clang_version: "4.0", libcxx: "", build_libcxx: "./install-libcxx.sh 4.0 4.0.1 &&  ", container: $UBUNTU_18_04, std: "11 14" }
           - { clang_version: "5.0", libcxx: "", build_libcxx: "./install-libcxx.sh 5.0 5.0.2 &&  ", container: $UBUNTU_18_04, std: "11 14 17" }
-          - { clang_version: "6.0", libcxx: "", build_libcxx: "./install-libcxx.sh 6.0 6.0.1 &&  ", container: $UBUNTU_18_04, std: "11 14 17" }
-          - { clang_version: "7",   libcxx: "", build_libcxx: "./install-libcxx.sh 7 7.1.0 && ", container: $UBUNTU_18_04, std: "11 14 17" }
+          - { clang_version: "6.0", libcxx: "'libc++-dev libc++abi-dev'", build_libcxx: "", container: $UBUNTU_18_04, std: "11 14 17" }
+          - { clang_version: "7",   libcxx: "'libc++-7-dev libc++abi-7-dev'", build_libcxx: "", container: $UBUNTU_18_04, std: "11 14 17" }
           - { clang_version: "8",   libcxx: "", build_libcxx: "./install-libcxx.sh 8 8.0.1 && ", container: $UBUNTU_20_04, std: "11 14 17" }
           - { clang_version: "9",   libcxx: "", build_libcxx: "./install-libcxx.sh 9 9.0.1 && ", container: $UBUNTU_20_04, std: "11 14 17" }
           - { clang_version: "10",  libcxx: "", build_libcxx: "./install-libcxx.sh 10 10.0.1 && ", container: $UBUNTU_20_04, std: "11 14 17 20" }
@@ -34,7 +34,7 @@ jobs:
           - { clang_version: "15",  libcxx: "", build_libcxx: "./install-libcxx.sh 15 15.0.7 && ", container: $UBUNTU_22_04, std: "11 14 17 20" }
           - { clang_version: "16",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04, std: "11 14 17 20 23" }
           - { clang_version: "17",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04, std: "11 14 17 20 23" }
-          - { clang_version: "18",  libcxx: "", build_libcxx: "", container: $UBUNTU_24_04, std: "11 14 17 20 23" }
+          - { clang_version: "18",  libcxx: "'libc++-18-dev libc++abi-18-dev'", build_libcxx: "", container: $UBUNTU_24_04, std: "11 14 17 20 23" }
 
     runs-on: ubuntu-latest
     env:
