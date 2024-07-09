@@ -5,6 +5,8 @@ LABEL maintainer="Björn Fahller <bjorn@fahller.se>"
 WORKDIR /root
 COPY test/test.cpp ./
 
+RUN touch /etc/dockerinit
+
 ARG LIBCXX
 ARG BUILD_LIBCXX
 RUN apt-get update -qq && \
@@ -71,9 +73,14 @@ RUN ./install-benchmark.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "libc++" 
     ./install-benchmark.sh clang++-${CLANG_VERSION} "${CXX_STANDARDS}" "" && \
     rm install-benchmark.sh
 
+COPY common/install-mold.sh .
+RUN ./install-mold.sh; rm install-mold.sh
+
 RUN apt-get clean
 
 ENV CC              clang-${CLANG_VERSION}
 ENV CXX             clang++-${CLANG_VERSION}
 ENV CMAKE_GENERATOR Ninja
 ENV PATH            /usr/lib/llvm-${CLANG_VERSION}/bin:${PATH}
+
+ENTRYPOINT bash -c "source /etc/dockerinit && bash"

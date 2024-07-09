@@ -5,6 +5,8 @@ LABEL maintainer="Björn Fahller <bjorn@fahller.se>"
 WORKDIR /root
 COPY test/test.cpp ./
 
+RUN touch /etc/dockerinit
+
 ARG GCC_VERSION
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
@@ -58,8 +60,12 @@ COPY common/install-benchmark.sh ./
 RUN ./install-benchmark.sh g++-${GCC_VERSION} "${CXX_STANDARDS}" "" && \
     rm install-benchmark.sh
 
+COPY common/install-mold.sh .
+RUN ./install-mold.sh; rm install-mold.sh
+
 RUN apt-get clean
 
 ENV CC              gcc-${GCC_VERSION}
 ENV CXX             g++-${GCC_VERSION}
 ENV CMAKE_GENERATOR Ninja
+ENTRYPOINT bash -c "source /etc/dockerinit && bash"
