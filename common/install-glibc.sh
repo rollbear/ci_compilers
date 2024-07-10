@@ -20,8 +20,12 @@ pushd glibc/build
 make -j 4
 make -j 4 install
 popd
-rm /usr/include/xlocale.h
-ln -s /usr/include/locale.h /usr/include/xlocale.h
+[ ! -e /usr/include/xlocale.h ] || { \
+  rm /usr/include/xlocale.h \
+  ln -s /usr/include/locale.h /usr/include/xlocale.h \
+}
 apt remove -y gawk bison texinfo gcc
 apt autoremove -y
 rm -rf glibc
+
+}
