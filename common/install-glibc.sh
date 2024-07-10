@@ -13,11 +13,12 @@ then
 fi
 apt install -y --no-install-recommends gawk bison texinfo gcc
 git clone -b glibc-${MIN_VERSION} --depth=1 git://sourceware.org/git/glibc
+lscpu
 mkdir glibc/build
 pushd glibc/build
 ../configure --disable-sanity-checks
-make
-make install
+make -j 4
+make -j 4 install
 popd
 rm /usr/include/xlocale.h
 ln -s /usr/include/locale.h /usr/include/xlocale.h
