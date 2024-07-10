@@ -7,15 +7,12 @@ COPY test/test.cpp ./
 
 RUN touch /etc/dockerinit
 
-ARG LIBCXX
-ARG BUILD_LIBCXX
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
     binutils-dev \
     ca-certificates \
     gdb \
     git \
-    ${LIBCXX} \
     libcurl4-openssl-dev \
     libdw-dev \
     libiberty-dev \
@@ -28,6 +25,15 @@ RUN apt-get update -qq && \
     xz-utils \
     zlib1g-dev \
     wget
+
+COPY common/install-glibc.sh .
+RUN stat ./install-glibc.sh
+RUN ./install-glibc.sh
+RUN rm install-glibc.sh
+
+ARG LIBCXX
+RUN [ -z "${LIBCXX}" ] || apt-get install -y --no-install-recommends ${LIBCXX}
+
 RUN apt-get install -y --no-install-recommends gpg gpg-agent || true
 
 COPY clang/install-clang.sh ./

@@ -7,18 +7,17 @@ COPY test/test.cpp ./
 
 RUN touch /etc/dockerinit
 
-ARG GCC_VERSION
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
     binutils-dev \
     ca-certificates \
-    g++-${GCC_VERSION} \
     gdb \
     git \
     libcurl4-openssl-dev \
     libdw-dev \
     libiberty-dev \
     libssl-dev \
+    make \
     ninja-build \
     parallel \
     python3 \
@@ -26,6 +25,13 @@ RUN apt-get update -qq && \
     xz-utils \
     zlib1g-dev \
     wget
+
+COPY common/install-glibc.sh .
+RUN ./install-glibc.sh; rm install-glibc.sh
+
+ARG GCC_VERSION
+RUN apt-get install -y --no-install-recommends   g++-${GCC_VERSION}
+
 RUN apt-get install -y --no-install-recommends gpg gpg-agent || true
 
 ARG GCC_VERSION

@@ -62,7 +62,6 @@ if [[ $VERSION == "3."* ]]; then
     cp -r llvm-build/lib/* /usr/lib/x86_64-linux-gnu
     cp -r ${SOURCE}/projects/libcxx/include/* /usr/lib/llvm-$1/include/c++/v1
 else
-    ln -s /usr/include/locale.h /usr/include/xlocale.h
     cmake -DCMAKE_C_COMPILER=clang-$1 -DCMAKE_CXX_COMPILER=clang++-$1 \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_WITH_INSTALL_RPATH=1 \
