@@ -21,11 +21,11 @@ do
           -DCMAKE_CXX_COMPILER=${CXX} \
           -DCMAKE_CXX_STANDARD=${STD} \
           -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-          -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
+          -DCMAKE_CXX_FLAGS="${CXXFLAGS} -Wno-error=shadow" \
           -DCMAKE_BUILD_TYPE=Release \
           -DHAVE_STD_REGEX=ON \
           -DBENCHMARK_ENABLE_TESTING=NO \
-          -DCMAKE_CXX_FLAGS="-Wno-error=shadow" \
+          -DCMAKE_VERBOSE_MAKEFILE=yes \
           -S benchmark_src \
           -G Ninja &&
     cmake --build build && cmake --install build && rm -r build
