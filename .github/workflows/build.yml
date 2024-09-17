@@ -35,6 +35,7 @@ jobs:
           - { clang_version: "16",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04, std: "11 14 17 20 23" }
           - { clang_version: "17",  libcxx: "", build_libcxx: "", container: $UBUNTU_22_04, std: "11 14 17 20 23" }
           - { clang_version: "18",  libcxx: "'libc++-18-dev libc++abi-18-dev'", build_libcxx: "", container: $UBUNTU_24_04, std: "11 14 17 20 23" }
+          - { clang_version: "19",  libcxx: "", build_libcxx: "", container: $UBUNTU_24_04, std: "11 14 17 20 23 26" }
 
     runs-on: ubuntu-latest
     env:
