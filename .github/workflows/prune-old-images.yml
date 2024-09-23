@@ -1,0 +1,17 @@
+on:
+  schedule:
+    - cron: "12 11 * * *"
+
+jobs:
+  delete-old-untagged:
+    name: "Delete untagged containers older that 4 weeks"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: snok/container-retention-policy@v3.0.0
+        with:
+          account: rollbear
+          token: ${{ secrets.GITHUB_TOKEN }}
+          image-names: "gcc clang"
+          tag-selection: untagged
+          cut-off: 4w
+          dry-run: true
