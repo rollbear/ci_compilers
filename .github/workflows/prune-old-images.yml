@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: "12 11 * * *"
+    - cron: "32 * * * *"
 
 jobs:
   delete-old-untagged:
