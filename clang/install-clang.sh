@@ -27,12 +27,14 @@ fetch_clang () {
     apt install -y clang-${VERSION} libc++-${VERSION}-dev libc++abi-${VERSION}-dev ${FUZZER}
     apt install -y clang-format-${VERSION} || true
     apt install -y clang-tools-${VERSION} || true
+    apt install -y clang-tidy-${VERSION} || true
 }
 
 
 apt install -y clang-${VERSION} ${LIBCXX} ${FUZZER}|| fetch_clang clang-${VERSION}
 apt install -y clang-format-${VERSION} || true
 apt install -y clang-tools-${VERSION} || true
+apt install -y clang-tidy-${VERSION} || true
 for f in /usr/bin/llvm*-${VERSION}
 do
   ln -s $f `echo $f | sed "s/-${VERSION}//"`
