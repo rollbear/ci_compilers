@@ -11,7 +11,7 @@ All images contain:
 * valgrind
 * kcov-v42 for compilers supporting C++17, kcov-v41 otherwise
 * catch2-2.13.10 
-* catch2-3.7.1
+* catch2-3.8.0
 * fmt-8.1.1
 * fmt-9.1.0
 * fmt-10.2.1
