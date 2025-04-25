@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: "20 * * * *"
+    - cron: "20 2 * * *"
 
 jobs:
   delete-package-versions:
@@ -14,4 +14,4 @@ jobs:
           image-names: "gcc clang"
           tag-selection: untagged
           cut-off: 8w
-          dry-run: true  # consider toggling this to true on your first run
+          dry-run: false  # consider toggling this to true on your first run
