@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: "15 * * * *"
+    - cron: "20 * * * *"
 
 jobs:
   delete-package-versions:
@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: snok/container-retention-policy@v3.0.0
         with:
-          account: rollbear
+          account: user
           token: ${{ secrets.GITHUB_TOKEN }}
           image-names: "gcc clang"
           tag-selection: untagged
