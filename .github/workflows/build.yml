@@ -120,3 +120,19 @@ jobs:
              --build-arg GCC_VERSION=${{ matrix.version.gcc_version }} \
              --build-arg CXX_STANDARDS="${{ matrix.version.std }}" \
              --platform linux/amd64 --tag $IMAGE -f $GITHUB_WORKSPACE/gcc/Dockerfile .
+
+  prune:
+    needs: [ gcc, clang ]
+    name: Delete untagged package versions older than 8 weeks
+    runs-on: ubuntu-latest
+    if:
+      ${{github.ref == 'refs/heads/main' }}
+    steps:
+      - uses: snok/container-retention-policy@v3.0.0
+        with:
+          account: user
+          token: ${{ secrets.GITHUB_TOKEN }}
+          image-names: "gcc clang"
+          tag-selection: untagged
+          cut-off: 8w
+          dry-run: false  # consider toggling this to true on your first run
