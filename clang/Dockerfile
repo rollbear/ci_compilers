@@ -39,11 +39,6 @@ COPY common/install-cmake.sh ./
 RUN ./install-cmake.sh && \
     rm install-cmake.sh
 
-COPY common/install-kcov.sh ./
-ARG CLANG_VERSION
-RUN ./install-kcov.sh clang-${CLANG_VERSION} clang++-${CLANG_VERSION} && \
-    rm install-kcov.sh
-
 COPY clang/install-libcxx.sh ./
 ARG BUILD_LIBCXX
 RUN ${BUILD_LIBCXX} && \

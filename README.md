@@ -9,7 +9,6 @@ All images contain:
 * cmake-4.1.0
 * ninja
 * valgrind
-* kcov-v42 for compilers supporting C++17, kcov-v41 otherwise
 * catch2-2.13.10 
 * catch2-3.9.1
 * fmt-8.1.1

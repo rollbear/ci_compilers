@@ -35,11 +35,6 @@ COPY common/install-cmake.sh ./
 RUN ./install-cmake.sh && \
     rm install-cmake.sh
 
-COPY common/install-kcov.sh ./
-ARG GCC_VERSION
-RUN ./install-kcov.sh gcc-${GCC_VERSION} g++-${GCC_VERSION} && \
-    rm  install-kcov.sh
-
 ARG GCC_VERSION
 ARG CXX_STANDARDS
 COPY common/install-catch2-3.sh common/install-catch2-2.sh ./
