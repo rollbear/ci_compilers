@@ -51,6 +51,7 @@ if [[ $VERSION == "3."* ]]; then
           -DLIBCXX_CXX_ABI_INCLUDE_PATH="${SOURCE}/projects/libcxxabi/include/" \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DLIBCXX_CXX_ABI='libcxxabi' \
+          -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
           llvm-source
     cmake --build llvm-build --target cxxabi
     cp -r llvm-build/lib/* /usr/lib/
@@ -78,6 +79,7 @@ else
           -DLIBCXX_INSTALL_RUNTIME_PATH=/usr/lib/llvm-$1/lib \
           -DLIBCXX_NEEDS_SITE_CONFIG=no \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
           -B llvm-build \
           llvm-source
     cmake --build llvm-build --target cxxabi
