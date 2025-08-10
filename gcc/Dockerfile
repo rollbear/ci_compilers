@@ -60,7 +60,7 @@ RUN ./install-mold.sh; rm install-mold.sh
 
 RUN apt-get clean
 
-ENV CC              gcc-${GCC_VERSION}
-ENV CXX             g++-${GCC_VERSION}
-ENV CMAKE_GENERATOR Ninja
+ENV CC=gcc-${GCC_VERSION}
+ENV CXX=g++-${GCC_VERSION}
+ENV CMAKE_GENERATOR=Ninja
 ENTRYPOINT bash -c "source /etc/dockerinit && bash"

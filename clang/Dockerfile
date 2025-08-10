@@ -73,9 +73,9 @@ RUN ./install-mold.sh; rm install-mold.sh
 
 RUN apt-get clean
 
-ENV CC              clang-${CLANG_VERSION}
-ENV CXX             clang++-${CLANG_VERSION}
-ENV CMAKE_GENERATOR Ninja
-ENV PATH            /usr/lib/llvm-${CLANG_VERSION}/bin:${PATH}
+ENV CC=clang-${CLANG_VERSION}
+ENV CXX=clang++-${CLANG_VERSION}
+ENV CMAKE_GENERATOR=Ninja
+ENV PATH=/usr/lib/llvm-${CLANG_VERSION}/bin:${PATH}
 
 ENTRYPOINT bash -c "source /etc/dockerinit && bash"
