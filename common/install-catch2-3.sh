@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eou pipefail
 
-VERSION="3.8.0"
+VERSION="3.9.1"
 
 CXX=$1
 CXX_STANDARDS="$2"
