@@ -12,6 +12,7 @@ RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
     binutils-dev \
     ca-certificates \
+    curl \
     g++-${GCC_VERSION} \
     gdb \
     git \
