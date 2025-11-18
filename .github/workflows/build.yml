@@ -6,6 +6,7 @@ env:
   UBUNTU_20_04: "ubuntu:20.04@sha256:33a5cc25d22c45900796a1aca487ad7a7cb09f09ea00b779e3b2026b4fc2faba"
   UBUNTU_22_04: "ubuntu:22.04@sha256:0bced47fffa3361afa981854fcabcd4577cd43cebbb808cea2b1f33a3dd7f508"
   UBUNTU_24_04: "ubuntu:24.04@sha256:36fa0c7153804946e17ee951fdeffa6a1c67e5088438e5b90de077de5c600d4c"
+  UBUNTU_25_10: "ubuntu:25.10@sha256:9b61739164b58f2263067bd3ab31c7746ded4cade1f9d708e6f1b047b408a470"
 on:
   push:
 
@@ -30,7 +31,7 @@ jobs:
           - { clang_version: "18",  libcxx: "", build_libcxx: "", container: $UBUNTU_24_04, std: "11 14 17 20 23" }
           - { clang_version: "19",  libcxx: "", build_libcxx: "", container: $UBUNTU_24_04, std: "11 14 17 20 23 26" }
           - { clang_version: "20",  libcxx: "", build_libcxx: "", container: $UBUNTU_24_04, std: "11 14 17 20 23 26" }
-          - { clang_version: "21",  libcxx: "", build_libcxx: "", container: $UBUNTU_24_04, std: "11 14 17 20 23 26" }
+          - { clang_version: "21",  libcxx: "", build_libcxx: "", container: $UBUNTU_25_10, std: "11 14 17 20 23 26" }
 
     runs-on: ubuntu-latest
     env:
