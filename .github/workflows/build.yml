@@ -72,7 +72,6 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - { gcc_version: "4.8", container: $UBUNTU_18_04, std: "11" }
           - { gcc_version: "4.9", container: $UBUNTU_16_04, std: "11 14" }
           - { gcc_version: "5",   container: $UBUNTU_18_04, std: "11 14 17" }
           - { gcc_version: "6",   container: $UBUNTU_18_04, std: "11 14 17" }
