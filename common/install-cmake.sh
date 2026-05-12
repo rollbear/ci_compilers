@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eou pipefail
 
-VERSION="4.1.0"
+VERSION="4.3.2"
 
 MIRROR_URL="https://github.com/Kitware/CMake/releases/download/v${VERSION}/"
 DOWNLOAD_SH="cmake-${VERSION}-linux-x86_64.sh"
