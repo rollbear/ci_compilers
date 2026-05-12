@@ -15,6 +15,7 @@ All images contain:
 * fmt-9.1.0
 * fmt-10.2.1
 * fmt-11.2.0
+* fmt-12.1.0
 * benchmark-v1.9.5
 
 The installed libraries are located under
