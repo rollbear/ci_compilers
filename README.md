@@ -10,7 +10,7 @@ All images contain:
 * ninja
 * valgrind
 * catch2-2.13.10 
-* catch2-3.14.0
+* catch2-3.15.2
 * fmt-8.1.1
 * fmt-9.1.0
 * fmt-10.2.1
