@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eou pipefail
 
-VERSIONS="12.1.0 11.2.0 10.2.1 9.1.0 8.1.1"
+VERSIONS="12.2.0 11.2.0 10.2.1 9.1.0 8.1.1"
 
 readonly CXX=$1
 readonly CXX_STANDARDS="$2"
